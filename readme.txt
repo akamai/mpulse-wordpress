@@ -1,9 +1,9 @@
 === mPulse Real User Measurement ===
 Contributors: SOASTA
 Tags: SOASTA, mPulse, RUM, performance, perf, webperf, analytics, real time analytics, real user measurement, real user monitoring
-Stable tag: 2.2
+Stable tag: 2.3
 Requires at least: 2.0
-Tested up to: 4.2
+Tested up to: 4.3
 
 How fast do your users think your site is, really? How fast should it be? How do you get there?
 
