@@ -39,34 +39,38 @@ function mpulse_plugin_action_links($links, $file) {
     return $links;
 }
 
-//Show mPulse Settings page
+// Show mPulse Settings page
 function mpulse_plugin_page() {
     if (!current_user_can( 'manage_options'))  {
         wp_die(__('Sorry, you do not have sufficient permissions to access this page.'));
     }
 
     wp_enqueue_style("soasta_wp", plugin_dir_url("/", __FILE__) . trim(dirname(plugin_basename(__FILE__)), '/') . "/soasta_wp.css");
+?>
 
+<div id='container' class='wrap'>
+    <img src="<?php echo plugin_dir_url("/", __FILE__) . trim(dirname(plugin_basename(__FILE__)), '/'); ?>/soasta_logo.png" alt="SOASTA Logo" />
+
+    <h1>SOASTA mPulse - Real User Measurement</h1>
+<?php
     if (isset($_POST['submit'])) {
         $mp_key = trim($_POST['mpulse_api_key']);
         $mp_pattern = '/^([A-Z0-9]{5}-){4}[A-Z0-9]{5}$/';
+
         if (preg_match($mp_pattern, $mp_key)) {
             update_option('mpulse_api_key', $mp_key);
-            echo "<div id=\"footer\" class=\"soasta_footer\"> <p>Your key has been updated.</p></div>";
+            echo "<div class=\"updated\"><p>Your key has been updated.</p></div>";
         } else {
-            echo "<div id=\"footer\" class=\"soasta_footer\"> <p>Your API key is invalid! Format: A1A1A-B2B2B-C3C3C-D4D4Dl-E5E5E </p></div>";
+            $error = new WP_Error();
+            $error->add('regerror','Foo!');
+            echo "<div class=\"error\"><p>Your API key is invalid! Format: A1A1A-B2B2B-C3C3C-D4D4Dl-E5E5E</p></div>";
         }
     }
 ?>
 
-<div id='container' class='soasta_container'>
-    <img src="<?php echo plugin_dir_url("/", __FILE__) . trim(dirname(plugin_basename(__FILE__)), '/'); ?>/soasta_logo.png" alt="SOASTA Logo" />
+    <p>Please enter your mPulse app's API KEY below. This can be found in your domain configuration within the <a href="http://mpulse.soasta.com">mPulse dashboard</a>.</p>
 
-    <h1>mPulse - Real User Measurement</h1>
-
-    <p>Please enter your <a href="http://mpulse.soasta.com">mPulse</a> app's API KEY below. This can be found in your domain configuration within <a href="http://mpulse.soasta.com">mPulse</a>.</p>
-
-    <p>If you do not yet have an mPulse account, you can <a href="http://www.soasta.com/free" target="_blank" title="Create a free mPulse account">set one up (For FREE!)</a></p>
+    <p>If you do not yet have an mPulse account, you can <a href="http://www.soasta.com/free" target="_blank" title="Create a free mPulse account">set one up (for FREE!)</a></p>
 
     <form method="post" action="" class="soasta_form">
         <input name="mpulse_api_key" type="text" id="mpulse_api_key" class="soasta_input" value="<?php echo get_option('mpulse_api_key');?>" maxlength="29" placeholder="A1A1A-B2B2B-C3C3C-D4D4D-E5E5E"/>
@@ -79,7 +83,7 @@ function mpulse_plugin_page() {
 <?php
 }
 
-//Include the snippet in the head of each page
+// Include the snippet in the head of each page
 function mpulse_add_rum_header() {
 ?>
 <script>
