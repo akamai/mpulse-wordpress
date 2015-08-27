@@ -1,6 +1,7 @@
 === mPulse Real User Measurement ===
 Contributors: SOASTA
 Tags: SOASTA, mPulse, RUM, performance, perf, webperf, analytics, real time analytics, real user measurement, real user monitoring
+License: MIT
 Stable tag: 2.3
 Requires at least: 2.0
 Tested up to: 4.3
@@ -30,6 +31,11 @@ There's no question that web and mobile application performance affects user beh
 6. The mPulse Waterfall Dashboard shows every network request of your visitors (using ResourceTiming data)
 
 == Changelog ==
+
+= 2.3 =
+* Updated interface to be consistent with latest WordPress styles
+* The Settings page is now listed under Settings instead of Plugins
+* Fixed a bug when W3 Total Cache is installed
 
 = 2.2 =
 * Fixed an issue with a trailing semi-colon in html
