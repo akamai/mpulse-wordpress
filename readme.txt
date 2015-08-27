@@ -6,20 +6,25 @@ Stable tag: 2.3
 Requires at least: 2.0
 Tested up to: 4.3
 
-How fast do your users think your site is, really? How fast should it be? How do you get there?
+How fast do your users think your site is, really?  How fast should it be?  How do you get there?
 
 == Description ==
 
-There's no question that web and mobile application performance affects user behavior—but how do you put that information to good use? Using Real User Monitoring (RUM), mPulse captures and aggregates the performance and engagement metrics most important to your business in real time, giving you the real user intelligence needed to correlate the impact of performance on the bottom line, take immediate action as required, and feed critical information back into the development lifecycle. All data is presented to you in a vivid, easy-to-understand and actionable format. - See more at: http://www.soasta.com/mpulse/
+There's no question that web and mobile application performance affects user behavior — but how do you put that information to good use?
+
+Using Real User Monitoring (RUM), SOASTA's mPulse captures and aggregates the performance and engagement metrics most important to your business in real time, giving you the real user intelligence needed to correlate the impact of performance on the bottom line, take immediate action as required, and feed critical information back into the development lifecycle.
+
+All data is presented to you in a vivid, easy-to-understand and actionable format.
+
+See more at: http://www.soasta.com/mpulse/
 
 == Installation ==
 
-1. If you haven't already, create an mPulse account (http://www.soasta.com/mpulse/ and copy your API key once you've configured a domain
+1. If you haven't already, create an mPulse account (http://www.soasta.com/mpulse/) and copy your API key once you've configured a domain
 2. Install the WordPress plugin
-	- Directly from WordPress admin: 'Plugins' > 'Add new'. Search for "SOASTA", "mpulse", or "Real User Monitoring" and "Install Now"
-	or
-	- Upload entire directory to /wp-content/plugins
-3. Now, from your your Plugins page, activate mPulse and configure through 'Settings' or from the Plugins menu. (You will need your API Key from step 1.)
+    - Directly from WordPress admin: 'Plugins' > 'Add new'. Search for "SOASTA", "mpulse", or "Real User Monitoring" and "Install Now", or
+    - Upload entire directory to /wp-content/plugins
+3. From your Plugins page, activate mPulse and configure through the "SOASTA mPulse" sub-menu under Settings.  You will need your API Key from step 1.
 
 == Screenshots ==
 
