@@ -27,6 +27,7 @@ There's no question that web and mobile application performance affects user beh
 3. Stunning WebGL visualizations illustrate exactly where users are impacted by site performance.
 4. To enable: From your mPulse domain configuration, copy your API key.
 5. Input your API key into the WordPress plugin configuration for mPulse.
+6. The mPulse Waterfall Dashboard shows every network request of your visitors (using ResourceTiming data)
 
 == Changelog ==
 
