@@ -20,7 +20,7 @@ function mpulse_cleanup() {
 
 // Add submenu to plugin menu
 function mpulse_plugin_config() {
-    add_submenu_page('plugins.php', 'mPulse Real User Measurement Configuration', 'mPulse RUM', 'manage_options', 'mpulse_plugin_page', 'mpulse_plugin_page');
+    add_options_page('SOASTA mPulse Real User Measurement Configuration', 'SOASTA mPulse', 'manage_options', 'mpulse_plugin_page', 'mpulse_plugin_page');
 }
 
 // Add plugin action link to Plugin page for mPulse Settings
@@ -32,7 +32,7 @@ function mpulse_plugin_action_links($links, $file) {
     }
 
     if ($file == $this_plugin) {
-        $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page=mpulse_plugin_page">Settings</a>';
+        $settings_link = '<a href="' . admin_url('options-general.php?page=mpulse_plugin_page') . '">Settings</a>';
         array_unshift($links, $settings_link);
     }
 
