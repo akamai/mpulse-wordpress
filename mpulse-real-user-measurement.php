@@ -107,7 +107,7 @@ function mpulse_add_rum_header() {
   doc.write('<body onload="document._l();">');
   doc.close();
 })();
-</script>;
+</script>
 <?php
 }
 
