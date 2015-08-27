@@ -3,7 +3,7 @@
 Plugin Name: SOASTA mPulse RUM
 Plugin URI: http://www.soasta.com/mpulse
 Description: What is the percieved speed of your web page & how does that impact your visitors? This is a plugin which allows you to include <a href="http://www.soasta.com/mpulse">mPulse Real User Measurement</a> in your WordPress site.
-Version: 2.0
+Version: 2.2
 Author: SOASTA
 */
 
