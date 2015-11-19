@@ -4,7 +4,7 @@ Tags: SOASTA, mPulse, RUM, performance, perf, webperf, analytics, real time anal
 License: MIT
 Stable tag: 2.3
 Requires at least: 2.0
-Tested up to: 4.3
+Tested up to: 4.4
 
 How fast do your users think your site is, really?  How fast should it be?  How do you get there?
 
