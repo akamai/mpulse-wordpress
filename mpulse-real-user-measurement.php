@@ -1,15 +1,14 @@
 <?php
 /*
-Plugin Name: SOASTA mPulse RUM
-Plugin URI: http://www.soasta.com/mpulse/
-Description: What is the percieved speed of your web page & how does that impact your visitors? This is a plugin which allows you to include <a href="http://www.soasta.com/mpulse">mPulse Real User Measurement</a> in your WordPress site.
-Version: 2.3
-Author: SOASTA
+Plugin Name: Akamai mPulse RUM
+Plugin URI: https://www.akamai.com/us/en/products/web-performance/mpulse-real-user-monitoring.jsp
+Description: What is the percieved speed of your web page & how does that impact your visitors? This is a plugin which allows you to include <a href="https://www.akamai.com/us/en/products/web-performance/mpulse-real-user-monitoring.jsp">mPulse Real User Measurement</a> in your WordPress site.
+Version: 2.4
+Author: Akamai
 */
 
 // Make sure we don't expose any info if called directly
 if (!function_exists('add_action')) {
-    echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
     exit;
 }
 
@@ -20,7 +19,7 @@ function mpulse_cleanup() {
 
 // Add submenu to plugin menu
 function mpulse_plugin_config() {
-    add_options_page('SOASTA mPulse Real User Measurement Configuration', 'SOASTA mPulse', 'manage_options', 'mpulse_plugin_page', 'mpulse_plugin_page');
+    add_options_page('Akamai mPulse Real User Measurement Configuration', 'Akamai mPulse', 'manage_options', 'mpulse_plugin_page', 'mpulse_plugin_page');
 }
 
 // Add plugin action link to Plugin page for mPulse Settings
@@ -45,13 +44,13 @@ function mpulse_plugin_page() {
         wp_die(__('Sorry, you do not have sufficient permissions to access this page.'));
     }
 
-    wp_enqueue_style("soasta_wp", plugin_dir_url("/", __FILE__) . trim(dirname(plugin_basename(__FILE__)), '/') . "/soasta_wp.css");
+    wp_enqueue_style("akamai_wp", plugin_dir_url("/", __FILE__) . trim(dirname(plugin_basename(__FILE__)), '/') . "/akamai_wp.css");
 ?>
 
 <div id='container' class='wrap'>
-    <img src="<?php echo plugin_dir_url("/", __FILE__) . trim(dirname(plugin_basename(__FILE__)), '/'); ?>/soasta_logo.png" alt="SOASTA Logo" />
+    <img src="<?php echo plugin_dir_url("/", __FILE__) . trim(dirname(plugin_basename(__FILE__)), '/'); ?>/akamai_logo.png" alt="Akamai Logo" />
 
-    <h1>SOASTA mPulse - Real User Measurement</h1>
+    <h1>Akamai mPulse - Real User Measurement</h1>
 <?php
     if (isset($_POST['submit'])) {
         $mp_key = trim($_POST['mpulse_api_key']);
@@ -70,11 +69,11 @@ function mpulse_plugin_page() {
 
     <p>Please enter your mPulse app's API KEY below. This can be found in your domain configuration within the <a href="http://mpulse.soasta.com">mPulse dashboard</a>.</p>
 
-    <p>If you do not yet have an mPulse account, you can <a href="http://www.soasta.com/free" target="_blank" title="Create a free mPulse account">set one up (for FREE!)</a></p>
+    <p>If you do not yet have an mPulse account, you can <a href="https://www.akamai.com/us/en/products/web-performance/mpulse-real-user-monitoring.jsp" target="_blank" title="Create a free mPulse account">set one up (for FREE!)</a></p>
 
-    <form method="post" action="" class="soasta_form">
-        <input name="mpulse_api_key" type="text" id="mpulse_api_key" class="soasta_input" value="<?php echo get_option('mpulse_api_key');?>" maxlength="29" placeholder="A1A1A-B2B2B-C3C3C-D4D4D-E5E5E"/>
-        <input name="submit" type="submit" class="soasta_submit"/>
+    <form method="post" action="" class="akamai_form">
+        <input name="mpulse_api_key" type="text" id="mpulse_api_key" class="akamai_input" value="<?php echo get_option('mpulse_api_key');?>" maxlength="29" placeholder="A1A1A-B2B2B-C3C3C-D4D4D-E5E5E"/>
+        <input name="submit" type="submit" class="akamai_submit"/>
     </form>
 
     <p><a href="<?php echo get_bloginfo('wpurl');?>/wp-admin/plugins.php">Back to Plugins...</a></p>
