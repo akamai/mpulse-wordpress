@@ -166,6 +166,9 @@ function mpulse_add_rum_header() {
         iframe.title = "";
         iframe.role = "presentation";
 
+        // Ensure we're not loaded lazily
+        iframe.loading = "eager";
+
         // Hide the iframe
         iframeStyle = (iframe.frameElement || iframe).style;
         iframeStyle.width = 0;
