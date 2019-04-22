@@ -275,13 +275,6 @@ function mpulse_add_rum_header() {
 
     if (window.addEventListener) {
         window.addEventListener("load", boomerangSaveLoadTime, false);
-
-        window.addEventListener("message", function(e) {
-            if (e && e.data && e.data.boomr_mq) {
-                window.BOOMR_mq = window.BOOMR_mq || [];
-                window.BOOMR_mq.push(e.data.boomr_mq);
-            }
-        });
     }
     else if (window.attachEvent) {
         window.attachEvent("onload", boomerangSaveLoadTime);
