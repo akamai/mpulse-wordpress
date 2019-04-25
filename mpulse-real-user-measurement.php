@@ -97,7 +97,6 @@ function mpulse_add_rum_header() {
     window.BOOMR.snippetExecuted = true;
     window.BOOMR.snippetVersion = 12;
 
-    // NOTE: Set Boomerang URL here
     window.BOOMR.url = "//c.go-mpulse.net/boomerang/<?php echo get_option('mpulse_api_key'); ?>";
 
     var // document.currentScript is supported in all browsers other than IE
