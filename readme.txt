@@ -2,9 +2,9 @@
 Contributors: Akamai
 Tags: SOASTA, Akamai, mPulse, RUM, performance, perf, webperf, analytics, real time analytics, real user measurement, real user monitoring
 License: MIT
-Stable tag: 2.6
+Stable tag: 2.7
 Requires at least: 2.0
-Tested up to: 5.0.0
+Tested up to: 5.8.0
 
 How fast do your users think your site is, really?  How fast should it be?  How do you get there?
 
@@ -36,6 +36,9 @@ See more at: https://www.akamai.com/us/en/products/web-performance/mpulse-real-u
 6. The mPulse Waterfall Dashboard shows every network request of your visitors (using ResourceTiming data)
 
 == Changelog ==
+
+= 2.7 =
+* Updated to Loader Snippet Version 15
 
 = 2.6 =
 * Updated to Loader Snippet Version 14
