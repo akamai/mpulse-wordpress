@@ -3,7 +3,7 @@
 Plugin Name: Akamai mPulse RUM
 Plugin URI: https://www.akamai.com/us/en/products/web-performance/mpulse-real-user-monitoring.jsp
 Description: What is the percieved speed of your web page & how does that impact your visitors? This is a plugin which allows you to include <a href="https://www.akamai.com/us/en/products/web-performance/mpulse-real-user-monitoring.jsp">mPulse Real User Measurement</a> in your WordPress site.
-Version: 2.6
+Version: 2.7
 Author: Akamai
 */
 
@@ -87,7 +87,7 @@ function mpulse_add_rum_header() {
 ?>
 <script>
 (function() {
-    // Boomerang Loader Snippet version 14
+    // Boomerang Loader Snippet version 15
     if (window.BOOMR && (window.BOOMR.version || window.BOOMR.snippetExecuted)) {
         return;
     }
@@ -95,7 +95,7 @@ function mpulse_add_rum_header() {
     window.BOOMR = window.BOOMR || {};
     window.BOOMR.snippetStart = new Date().getTime();
     window.BOOMR.snippetExecuted = true;
-    window.BOOMR.snippetVersion = 14;
+    window.BOOMR.snippetVersion = 15;
 
     window.BOOMR.url = "https://c.go-mpulse.net/boomerang/<?php echo get_option('mpulse_api_key'); ?>";
 
@@ -128,7 +128,7 @@ function mpulse_add_rum_header() {
     }
 
     // Non-blocking iframe loader (fallback for non-Preload scenarios) for all recent browsers.
-    // For IE 6/7, falls back to dynamic script node.
+    // For IE 6/7/8, falls back to dynamic script node.
     function iframeLoader(wasFallback) {
         promoted = true;
 
@@ -148,16 +148,18 @@ function mpulse_add_rum_header() {
             parent.appendChild(script);
         };
 
-        // For IE 6/7, we'll just load the script in the current frame, as those browsers don't support 'about:blank'
-        // for an iframe src (it triggers warnings on secure sites).  This means loading on IE 6/7 may cause SPoF.
-        if (!window.addEventListener && window.attachEvent && navigator.userAgent.match(/MSIE [67]\./)) {
+        // For IE 6/7/8, we'll just load the script in the current frame:
+        // * IE 6/7 don't support 'about:blank' for an iframe src (it triggers warnings on secure sites)
+        // * IE 8 required a doc write call for it to work, which is bad practice
+        // This means loading on IE 6/7/8 may cause SPoF.
+        if (!window.addEventListener && window.attachEvent && navigator.userAgent.match(/MSIE [678]\./)) {
             window.BOOMR.snippetMethod = "s";
 
             bootstrap(parentNode, "boomr-async");
             return;
         }
 
-        // The rest of this function is IE8+ and other browsers that don't support Preload hints but will work with CSP & iframes
+        // The rest of this function is for browsers that don't support Preload hints but will work with CSP & iframes
         iframe = document.createElement("IFRAME");
 
         // An empty frame
@@ -201,30 +203,16 @@ function mpulse_add_rum_header() {
             doc = win.document.open();
         }
 
-        if (dom) {
-            // Unsafe version for IE8 compatibility. If document.domain has changed, we can't use win, but we can use doc.
-            doc._boomrl = function() {
-                this.domain = dom;
-                bootstrap();
-            };
+        // document.domain hasn't changed, regular method should be OK
+        win._boomrl = function() {
+            bootstrap();
+        };
 
-            // Run our function at load.
-            // Split the string so HTML code injectors don't get confused and add code here.
-            // NOTE: Using String.fromCharCode to avoid an issue with W3TC plugin
-            doc.write("<bo" + "dy onload='document._boomrl();'" + String.fromCharCode(62));
+        if (win.addEventListener) {
+            win.addEventListener("load", win._boomrl, false);
         }
-        else {
-            // document.domain hasn't changed, regular method should be OK
-            win._boomrl = function() {
-                bootstrap();
-            };
-
-            if (win.addEventListener) {
-                win.addEventListener("load", win._boomrl, false);
-            }
-            else if (win.attachEvent) {
-                win.attachEvent("onload", win._boomrl);
-            }
+        else if (win.attachEvent) {
+            win.attachEvent("onload", win._boomrl);
         }
 
         // Finish the document
